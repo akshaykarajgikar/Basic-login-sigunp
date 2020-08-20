@@ -1,0 +1,33 @@
+<div class="row align-items-start">
+  <div
+    class="col-12 col-xl-3 border-none border-xl-right text-center text-xl-left mr-0 mr-xl-5 py-0 py-xl-5"
+  >
+    <div class="my-2 my-xl-4">
+      <a
+        routerLink="/dashboard/register"
+        [routerLinkActive]="['active']"
+        class="text-decoration-none text-dark"
+        ><h5>Register</h5></a
+      >
+    </div>
+    <div class="my-2 my-xl-4">
+      <a
+        routerLink="/dashboard/list"
+        [routerLinkActive]="['active']"
+        class="text-decoration-none text-dark"
+        ><h5>List</h5></a
+      >
+    </div>
+    <div class="my-5">
+      <button class="btn btn-primary rounded-lg" (click)="logout()">
+        <div class="spinner-border spinner-border-sm" *ngIf="loggedOut">
+          <span class="sr-only">Loading...</span>
+        </div>
+        Logout
+      </button>
+    </div>
+  </div>
+  <div class="col-12 col-xl-8">
+    <router-outlet></router-outlet>
+  </div>
+</div>

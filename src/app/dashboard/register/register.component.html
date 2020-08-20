@@ -1,0 +1,70 @@
+<form (ngSubmit)="saveMyData()" #userData="ngForm">
+  <div *ngIf="detailsEntetred" class="alert alert-success">
+    Data Entered Successfully!!!
+  </div>
+  <div class="form-group">
+    <label>Name</label>
+    <input
+      type="email"
+      class="form-control"
+      name="name"
+      #nameRef="ngModel"
+      [(ngModel)]="name"
+      required
+      [ngClass]="{
+        'border-danger': !nameRef.valid && nameRef.touched
+      }"
+    />
+  </div>
+  <div class="form-group">
+    <label>Email address</label>
+    <input
+      type="email"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      class="form-control"
+      name="email"
+      #emailRef="ngModel"
+      [(ngModel)]="email"
+      required
+      [ngClass]="{
+        'border-danger': !emailRef.valid && emailRef.touched
+      }"
+    />
+    <small
+      class="text-danger"
+      *ngIf="!emailRef.valid && emailRef.touched && !emailRef?.errors?.pattern"
+      >Email must be a valid email address</small
+    >
+  </div>
+  <div class="form-group">
+    <label>Phone</label>
+    <input
+      type="text"
+      class="form-control"
+      name="password"
+      #phoneRef="ngModel"
+      [(ngModel)]="phone"
+      required
+      [ngClass]="{
+        'border-danger': !phoneRef.valid && phoneRef.touched
+      }"
+    />
+  </div>
+  <div class="form-group">
+    <label>City</label>
+    <input
+      type="text"
+      class="form-control"
+      name="city"
+      #cityRef="ngModel"
+      [(ngModel)]="city"
+      required
+      [ngClass]="{
+        'border-danger': !cityRef.valid && cityRef.touched
+      }"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!userData.valid">
+    Submit
+  </button>
+</form>
