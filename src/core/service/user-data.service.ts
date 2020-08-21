@@ -19,7 +19,6 @@ export class UserDataService {
 
     if (previousData !== null) {
       if (previousData.hasOwnProperty(loggedInUser)) {
-        console.log("it includes!");
         previousData[loggedInUser] = [
           ...previousData[loggedInUser],
           { name: name, email: email, phone: phone, city: city },
@@ -39,7 +38,7 @@ export class UserDataService {
   getUserData() {
     const loggedInUser = JSON.parse(sessionStorage.getItem(LOGGEDINUSER));
     const allData = JSON.parse(sessionStorage.getItem(USERDATA));
-    let userData = allData[loggedInUser];
-    return userData;
+    if (allData)
+      if (allData.hasOwnProperty(loggedInUser)) return allData[loggedInUser];
   }
 }
